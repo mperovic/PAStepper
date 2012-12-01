@@ -45,11 +45,11 @@
 	_tintColor = [UIColor whiteColor];
 	_textColor = [UIColor blackColor];
 	_value = 0;
-	_continuous = NO;
-	_maximumValue = 100;
+	_continuous = YES;
 	_minimumValue = 0;
+	_maximumValue = 100;
 	_stepValue = 1;
-	_wraps = NO;
+	_wraps = YES;
 	_autorepeat = YES;
 	_autorepeatInterval = 0.5;
 	label.textColor = _textColor;
@@ -109,14 +109,30 @@
 - (void)setMinimumValue:(double)minValue
 {
 	if (minValue > _maximumValue) {
-		return;
+		NSException *ex = [NSException exceptionWithName:NSInvalidArgumentException
+												  reason:@"Invalid minimumValue"
+												userInfo:nil];
+		@throw ex;
+	}
+}
+
+- (void)setStepValue:(double)stepValue
+{
+	if (stepValue <= 0) {
+		NSException *ex = [NSException exceptionWithName:NSInvalidArgumentException
+												  reason:@"Invalid stepValue"
+												userInfo:nil];
+		@throw ex;
 	}
 }
 
 - (void)setMaximumValue:(double)maxValue
 {
 	if (maxValue < _minimumValue) {
-		return;
+		NSException *ex = [NSException exceptionWithName:NSInvalidArgumentException
+												  reason:@"Invalid maximumValue"
+												userInfo:nil];
+		@throw ex;
 	}
 }
 
@@ -128,7 +144,11 @@
 		val = _maximumValue;
 	}
 	_value = val;
-	[self setLabelText];
+	
+	if (_value == val) {
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
+		[self setLabelText];
+	}
 }
 
 - (void)setAutorepeatValue:(double)autorepeatInterval
@@ -329,8 +349,7 @@
 			if (!_wraps) {
 				return;
 			} else {
-				double diff = _value - newValue;
-				newValue = _maximumValue - diff;
+				newValue = _maximumValue;
 			}
 		}
 	} else {
@@ -338,8 +357,7 @@
 			if (!_wraps) {
 				return;
 			} else {
-				double diff = newValue - _maximumValue;
-				newValue = _minimumValue - diff;
+				newValue = _minimumValue;
 			}
 		}
 	}

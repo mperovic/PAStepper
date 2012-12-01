@@ -25,6 +25,7 @@
 		DCB66777166A285000AAFDF9 /* stepper_white_bckg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB66770166A285000AAFDF9 /* stepper_white_bckg.png */; };
 		DCB66778166A285000AAFDF9 /* plus_bckg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB66771166A285000AAFDF9 /* plus_bckg.png */; };
 		DCB66779166A285000AAFDF9 /* minus_bckg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB66772166A285000AAFDF9 /* minus_bckg.png */; };
+		DCB6677B166A2FE900AAFDF9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DCB6677A166A2FE900AAFDF9 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DCB66770166A285000AAFDF9 /* stepper_white_bckg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepper_white_bckg.png; sourceTree = "<group>"; };
 		DCB66771166A285000AAFDF9 /* plus_bckg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_bckg.png; sourceTree = "<group>"; };
 		DCB66772166A285000AAFDF9 /* minus_bckg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus_bckg.png; sourceTree = "<group>"; };
+		DCB6677A166A2FE900AAFDF9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		DCB6674F166A27BD00AAFDF9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DCB6677A166A2FE900AAFDF9 /* README.md */,
 				DCB66750166A27BD00AAFDF9 /* PAStepper-Info.plist */,
 				DCB66751166A27BD00AAFDF9 /* InfoPlist.strings */,
 				DCB66754166A27BD00AAFDF9 /* main.m */,
@@ -192,6 +195,7 @@
 				DCB66777166A285000AAFDF9 /* stepper_white_bckg.png in Resources */,
 				DCB66778166A285000AAFDF9 /* plus_bckg.png in Resources */,
 				DCB66779166A285000AAFDF9 /* minus_bckg.png in Resources */,
+				DCB6677B166A2FE900AAFDF9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
