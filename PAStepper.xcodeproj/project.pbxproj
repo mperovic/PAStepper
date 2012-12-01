@@ -18,6 +18,13 @@
 		DCB6675F166A27BD00AAFDF9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB6675E166A27BD00AAFDF9 /* Default-568h@2x.png */; };
 		DCB66762166A27BD00AAFDF9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB66760166A27BD00AAFDF9 /* MainStoryboard.storyboard */; };
 		DCB66765166A27BD00AAFDF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB66764166A27BD00AAFDF9 /* ViewController.m */; };
+		DCB66773166A285000AAFDF9 /* PAStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB6676B166A285000AAFDF9 /* PAStepper.m */; };
+		DCB66774166A285000AAFDF9 /* stepper_white_bckg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB6676D166A285000AAFDF9 /* stepper_white_bckg@2x.png */; };
+		DCB66775166A285000AAFDF9 /* plus_bckg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB6676E166A285000AAFDF9 /* plus_bckg@2x.png */; };
+		DCB66776166A285000AAFDF9 /* minus_bckg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB6676F166A285000AAFDF9 /* minus_bckg@2x.png */; };
+		DCB66777166A285000AAFDF9 /* stepper_white_bckg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB66770166A285000AAFDF9 /* stepper_white_bckg.png */; };
+		DCB66778166A285000AAFDF9 /* plus_bckg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB66771166A285000AAFDF9 /* plus_bckg.png */; };
+		DCB66779166A285000AAFDF9 /* minus_bckg.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB66772166A285000AAFDF9 /* minus_bckg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +44,14 @@
 		DCB66761166A27BD00AAFDF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DCB66763166A27BD00AAFDF9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DCB66764166A27BD00AAFDF9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DCB6676B166A285000AAFDF9 /* PAStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAStepper.m; sourceTree = "<group>"; };
+		DCB6676C166A285000AAFDF9 /* PAStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAStepper.h; sourceTree = "<group>"; };
+		DCB6676D166A285000AAFDF9 /* stepper_white_bckg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper_white_bckg@2x.png"; sourceTree = "<group>"; };
+		DCB6676E166A285000AAFDF9 /* plus_bckg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus_bckg@2x.png"; sourceTree = "<group>"; };
+		DCB6676F166A285000AAFDF9 /* minus_bckg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus_bckg@2x.png"; sourceTree = "<group>"; };
+		DCB66770166A285000AAFDF9 /* stepper_white_bckg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepper_white_bckg.png; sourceTree = "<group>"; };
+		DCB66771166A285000AAFDF9 /* plus_bckg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_bckg.png; sourceTree = "<group>"; };
+		DCB66772166A285000AAFDF9 /* minus_bckg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus_bckg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +98,14 @@
 		DCB6674E166A27BD00AAFDF9 /* PAStepper */ = {
 			isa = PBXGroup;
 			children = (
+				DCB6676C166A285000AAFDF9 /* PAStepper.h */,
+				DCB6676B166A285000AAFDF9 /* PAStepper.m */,
+				DCB6676D166A285000AAFDF9 /* stepper_white_bckg@2x.png */,
+				DCB6676E166A285000AAFDF9 /* plus_bckg@2x.png */,
+				DCB6676F166A285000AAFDF9 /* minus_bckg@2x.png */,
+				DCB66770166A285000AAFDF9 /* stepper_white_bckg.png */,
+				DCB66771166A285000AAFDF9 /* plus_bckg.png */,
+				DCB66772166A285000AAFDF9 /* minus_bckg.png */,
 				DCB66757166A27BD00AAFDF9 /* AppDelegate.h */,
 				DCB66758166A27BD00AAFDF9 /* AppDelegate.m */,
 				DCB66760166A27BD00AAFDF9 /* MainStoryboard.storyboard */,
@@ -163,6 +186,12 @@
 				DCB6675D166A27BD00AAFDF9 /* Default@2x.png in Resources */,
 				DCB6675F166A27BD00AAFDF9 /* Default-568h@2x.png in Resources */,
 				DCB66762166A27BD00AAFDF9 /* MainStoryboard.storyboard in Resources */,
+				DCB66774166A285000AAFDF9 /* stepper_white_bckg@2x.png in Resources */,
+				DCB66775166A285000AAFDF9 /* plus_bckg@2x.png in Resources */,
+				DCB66776166A285000AAFDF9 /* minus_bckg@2x.png in Resources */,
+				DCB66777166A285000AAFDF9 /* stepper_white_bckg.png in Resources */,
+				DCB66778166A285000AAFDF9 /* plus_bckg.png in Resources */,
+				DCB66779166A285000AAFDF9 /* minus_bckg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +205,7 @@
 				DCB66755166A27BD00AAFDF9 /* main.m in Sources */,
 				DCB66759166A27BD00AAFDF9 /* AppDelegate.m in Sources */,
 				DCB66765166A27BD00AAFDF9 /* ViewController.m in Sources */,
+				DCB66773166A285000AAFDF9 /* PAStepper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +287,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PAStepper/PAStepper-Prefix.pch";
 				INFOPLIST_FILE = "PAStepper/PAStepper-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -268,6 +299,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PAStepper/PAStepper-Prefix.pch";
 				INFOPLIST_FILE = "PAStepper/PAStepper-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

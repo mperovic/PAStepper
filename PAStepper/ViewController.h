@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PAStepper.h"
 
 @interface ViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet PAStepper *paStepper;
 
 @end
