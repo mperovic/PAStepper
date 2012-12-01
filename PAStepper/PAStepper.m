@@ -49,7 +49,7 @@
 	_minimumValue = 0;
 	_maximumValue = 100;
 	_stepValue = 1;
-	_wraps = YES;
+	_wraps = NO;
 	_autorepeat = YES;
 	_autorepeatInterval = 0.5;
 	label.textColor = _textColor;
