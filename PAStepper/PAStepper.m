@@ -72,6 +72,7 @@
 	[self addSubview:backgroundImageView];
 	
 	// label
+	[self setLabelTextNumberFormatStyle:NSNumberFormatterNoStyle];
 	label = [[UILabel alloc] initWithFrame:CGRectMake(2.0, 2.0, 62.0, 25.0)];
 	[label setTextAlignment:UITextAlignmentCenter];
 	[label setFont:[UIFont boldSystemFontOfSize:17.0]];
@@ -100,13 +101,13 @@
 {
 	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 	[formatter setFormatterBehavior:NSNumberFormatterBehaviorDefault];
-	[formatter setNumberStyle:NSNumberFormatterBehaviorDefault];
+	[formatter setNumberStyle:[self labelTextNumberFormatStyle]];
 	[label setText:[formatter stringFromNumber:[NSNumber numberWithDouble:_value]]];
 }
 
 
 #pragma mark - Set Values
-- (void)setMinimumValue:(double)minValue
+- (void)setMinimumValue:(CGFloat)minValue
 {
 	if (minValue > _maximumValue) {
 		NSException *ex = [NSException exceptionWithName:NSInvalidArgumentException
@@ -114,9 +115,11 @@
 												userInfo:nil];
 		@throw ex;
 	}
+	
+	_minimumValue = minValue;
 }
 
-- (void)setStepValue:(double)stepValue
+- (void)setStepValue:(CGFloat)stepValue
 {
 	if (stepValue <= 0) {
 		NSException *ex = [NSException exceptionWithName:NSInvalidArgumentException
@@ -124,9 +127,11 @@
 												userInfo:nil];
 		@throw ex;
 	}
+	
+	_stepValue = stepValue;
 }
 
-- (void)setMaximumValue:(double)maxValue
+- (void)setMaximumValue:(CGFloat)maxValue
 {
 	if (maxValue < _minimumValue) {
 		NSException *ex = [NSException exceptionWithName:NSInvalidArgumentException
@@ -134,9 +139,11 @@
 												userInfo:nil];
 		@throw ex;
 	}
+	
+	_maximumValue = maxValue;
 }
 
-- (void)setValue:(double)val
+- (void)setValue:(CGFloat)val
 {
 	if (val < _minimumValue) {
 		val = _minimumValue;
@@ -151,7 +158,7 @@
 	}
 }
 
-- (void)setAutorepeatValue:(double)autorepeatInterval
+- (void)setAutorepeatValue:(CGFloat)autorepeatInterval
 {
 	if (autorepeatInterval > 0.0) {
 		_autorepeatInterval = autorepeatInterval;
