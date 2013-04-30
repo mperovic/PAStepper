@@ -152,3 +152,8 @@ setIncrementImage:forState: Sets the  background image to use for the increment 
 Parameters
 - image: The background image to use for the increment glyph.
 - state: The control state.
+
+
+License: 
+---------------------------
+PAStepper is released under the GNU GENERAL PUBLIC LICENSE (see the LICENSE file)
