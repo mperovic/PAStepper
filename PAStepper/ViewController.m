@@ -19,6 +19,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    self.paStepper.value = 1.03;
     self.paStepper.minimumValue = 1;
     self.paStepper.maximumValue = 50;
     //self.paStepper.editableManually = NO;
