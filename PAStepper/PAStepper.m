@@ -8,13 +8,25 @@
 
 #import "PAStepper.h"
 
+@interface ADNoActionTextField : UITextField
 
-@interface PAStepper () {
+@end
+
+@implementation ADNoActionTextField
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender{
+    return NO;
+}
+
+@end
+
+@interface PAStepper ()<UITextFieldDelegate> {
 	UIImageView *backgroundImageView;
 	UIButton *incrementButton;
 	UIButton *decrementButton;
 	UILabel *label;
-	
+    ADNoActionTextField *_textField;
+    
 	UIImage *normalStateImage;
 	UIImage *selectedStateImage;
 	UIImage *highlightedStateImage;
@@ -51,7 +63,8 @@
 	_stepValue = 1;
 	_wraps = NO;
 	_autorepeat = YES;
-	_autorepeatInterval = 0.5;
+	_autorepeatInterval = 0.2;
+    _editableManually = YES;
 	label.textColor = _textColor;
 	
 	// init left button
@@ -76,9 +89,28 @@
 	[label setTextAlignment:UITextAlignmentCenter];
 	[label setFont:[UIFont boldSystemFontOfSize:17.0]];
 	[label setTextColor:_textColor];
-	[self setLabelText];
+	[self updateViews];
 	[backgroundImageView addSubview:label];
-	
+    label.hidden = YES;
+    
+    //TextField the number
+    _textField = [[ADNoActionTextField alloc] init];
+    _textField.font = [UIFont boldSystemFontOfSize:17.0];
+    _textField.textAlignment = NSTextAlignmentCenter;
+    _textField.backgroundColor = [UIColor clearColor];
+    _textField.clearButtonMode = UITextFieldViewModeNever;
+    _textField.borderStyle = UITextBorderStyleNone;
+    _textField.inputView = nil;
+    _textField.placeholder = [self formatedStringForValue:_value];
+    _textField.delegate = self;
+    [_textField setKeyboardType:UIKeyboardTypeNumberPad];
+    _textField.frame = backgroundImageView.frame;
+    [_textField addTarget:self action:@selector(didChangeTextField) forControlEvents: UIControlEventEditingChanged];
+    [_textField addTarget:self action:@selector(didEndEditingTextField) forControlEvents: UIControlEventEditingDidEnd];
+    _textField.autoresizingMask = UIViewAutoresizingNone; // push to none
+    _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+    [self addSubview:_textField];
+    
 	// init right button
 	incrementButton = [[UIButton alloc] initWithFrame:CGRectMake(91.0, 0.0, 25.0, 29.0)];
 	[incrementButton setBackgroundImage:[UIImage imageNamed:@"plus_bckg"] forState:UIControlStateNormal];
@@ -96,12 +128,27 @@
 	[super setFrame:CGRectMake(frame.origin.x, frame.origin.y, 116.0, 29.0)];
 }
 
-- (void)setLabelText
+- (NSString *)formatedStringForValue:(double)value{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setFormatterBehavior:NSNumberFormatterBehaviorDefault];
+    [formatter setNumberStyle:NSNumberFormatterBehaviorDefault];
+    formatter.maximumFractionDigits = 1;
+    NSString *formatedValueString = [formatter stringFromNumber:[NSNumber numberWithDouble:value]];
+    return formatedValueString;
+}
+
+- (void)updateViews
 {
-	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-	[formatter setFormatterBehavior:NSNumberFormatterBehaviorDefault];
-	[formatter setNumberStyle:NSNumberFormatterBehaviorDefault];
-	[label setText:[formatter stringFromNumber:[NSNumber numberWithDouble:_value]]];
+    NSString *formatedValueString = [self formatedStringForValue:_value];
+	[label setText:formatedValueString];
+    _textField.text = formatedValueString;
+    
+    BOOL canDecrese = (_value > _minimumValue);
+    BOOL canIncrese = (_value < _maximumValue);
+    
+    decrementButton.enabled = canDecrese;
+    incrementButton.enabled = canIncrese;
+    
 }
 
 
@@ -114,6 +161,12 @@
 												userInfo:nil];
 		@throw ex;
 	}
+    _minimumValue = minValue;
+    _textField.placeholder = [self formatedStringForValue:_minimumValue];
+    if (_value < _minimumValue) {
+        _value = _minimumValue;
+        [self updateViews];
+    }
 }
 
 - (void)setStepValue:(double)stepValue
@@ -124,6 +177,7 @@
 												userInfo:nil];
 		@throw ex;
 	}
+    _stepValue = stepValue;
 }
 
 - (void)setMaximumValue:(double)maxValue
@@ -134,6 +188,11 @@
 												userInfo:nil];
 		@throw ex;
 	}
+    _maximumValue = maxValue;
+    if (_value > _maximumValue) {
+        _value = _maximumValue;
+        [self updateViews];
+    }
 }
 
 - (void)setValue:(double)val
@@ -147,7 +206,7 @@
 	
 	if (_value == val) {
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
-		[self setLabelText];
+		[self updateViews];
 	}
 }
 
@@ -161,6 +220,13 @@
 	}
 }
 
+- (void)setEditableManually:(BOOL)editableManually{
+    _editableManually = editableManually;
+    _textField.enabled = _editableManually;
+    if (!_editableManually) {
+        [_textField resignFirstResponder];
+    }
+}
 
 # pragma mark - Public Methods
 
@@ -306,6 +372,41 @@
 	}
 }
 
+-(void) didChangeTextField
+{
+    NSString *text = _textField.text;
+    if (text.length > 0) {
+        [self setValue:[text doubleValue]];
+    }
+}
+
+- (void)didEndEditingTextField{
+    NSString *text = _textField.text;
+    [self setValue:[text doubleValue]];
+}
+
+- (BOOL)isValidTextFieldValue:(NSString *)valueString{
+    if ([valueString isEqualToString:@""]) {
+        return YES;
+    }
+    double valueDouble = [valueString doubleValue];
+    if (valueDouble < _minimumValue || valueDouble > _maximumValue) {
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSString *text = textField.text;
+    NSString *replacesString = [text stringByReplacingCharactersInRange:range withString:string];
+    BOOL validInput = [self isValidTextFieldValue:replacesString];
+    if (!validInput) {
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark - Overwrite UIControl methods
 
