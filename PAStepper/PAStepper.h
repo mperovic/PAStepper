@@ -23,6 +23,9 @@
 @property (readonly, nonatomic) NSNumberFormatter *numberFormater;
 @property (assign, nonatomic) BOOL editableManually;    // whether we can input value using the builtin textfield
 
+@property (readonly, nonatomic) NSNumberFormatter *numberFormater;
+@property (assign, nonatomic) BOOL editableManually;    // whether we can input value using the builtin textfield
+
 @property (strong, nonatomic) UIColor *tintColor;
 @property (strong, nonatomic) UIColor *textColor;
 
