@@ -143,14 +143,17 @@
 	[label setText:formatedValueString];
     _textField.text = formatedValueString;
     
+    [self checkButtonState];
+    
+}
+
+- (void)checkButtonState{
     BOOL canDecrese = (_value > _minimumValue);
     BOOL canIncrese = (_value < _maximumValue);
     
     decrementButton.enabled = canDecrese;
     incrementButton.enabled = canIncrese;
-    
 }
-
 
 #pragma mark - Set Values
 - (void)setMinimumValue:(double)minValue
