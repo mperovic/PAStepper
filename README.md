@@ -6,7 +6,8 @@ PAStepper is easy to use replacement for UIStepper control.
 
 DEMO
 ====
-![image](https://github.com/andy380743909/PAStepper/blob/master/PAStepper/screenshot-1.png)
+
+<img src="https://github.com/andy380743909/PAStepper/raw/master/PAStepper/screenshot-1.png" style="width:320px;">
 
 
 Properties
