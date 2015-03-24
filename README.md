@@ -3,6 +3,13 @@ PAStepper
 
 PAStepper is easy to use replacement for UIStepper control.
 
+
+DEMO
+====
+
+<img src="https://github.com/andy380743909/PAStepper/raw/master/PAStepper/screenshot-1.png" style="width:320px;">
+
+
 Properties
 ==========
 
