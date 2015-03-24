@@ -18,6 +18,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.paStepper.minimumValue = 1;
+    self.paStepper.maximumValue = 50;
+    //self.paStepper.editableManually = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -28,6 +32,12 @@
 
 - (void)viewDidUnload {
     [self setPaStepper:nil];
+
     [super viewDidUnload];
 }
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+
 @end
