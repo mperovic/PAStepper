@@ -10,14 +10,15 @@
 
 @interface PAStepper : UIControl
 
-@property (assign, nonatomic) double value;
-@property (assign, nonatomic) double minimumValue;
-@property (assign, nonatomic) double maximumValue;
-@property (assign, nonatomic) double stepValue;
+@property (assign, nonatomic) CGFloat value;
+@property (assign, nonatomic) CGFloat minimumValue;
+@property (assign, nonatomic) CGFloat maximumValue;
+@property (assign, nonatomic) CGFloat stepValue;
 @property (assign, nonatomic) BOOL wraps;
 @property (assign, nonatomic) BOOL continuous;
 @property (assign, nonatomic) BOOL autorepeat;
-@property (assign, nonatomic) double autorepeatInterval;
+@property (assign, nonatomic) CGFloat autorepeatInterval;
+@property (assign, nonatomic) NSNumberFormatterStyle labelTextNumberFormatStyle;
 
 @property (strong, nonatomic) UIColor *tintColor;
 @property (strong, nonatomic) UIColor *textColor;
