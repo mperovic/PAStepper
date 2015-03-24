@@ -67,6 +67,11 @@
     _editableManually = YES;
 	label.textColor = _textColor;
 	
+    _numberFormater = [[NSNumberFormatter alloc] init];
+    [_numberFormater setFormatterBehavior:NSNumberFormatterBehaviorDefault];
+    [_numberFormater setNumberStyle:NSNumberFormatterDecimalStyle];
+    _numberFormater.maximumFractionDigits = 0;
+    
 	// init left button
 	decrementButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 25.0, 29.0)];
 	[decrementButton setBackgroundImage:[UIImage imageNamed:@"minus_bckg"] forState:UIControlStateNormal];
@@ -129,11 +134,8 @@
 }
 
 - (NSString *)formatedStringForValue:(double)value{
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setFormatterBehavior:NSNumberFormatterBehaviorDefault];
-    [formatter setNumberStyle:NSNumberFormatterBehaviorDefault];
-    formatter.maximumFractionDigits = 1;
-    NSString *formatedValueString = [formatter stringFromNumber:[NSNumber numberWithDouble:value]];
+    
+    NSString *formatedValueString = [_numberFormater stringFromNumber:[NSNumber numberWithDouble:value]];
     return formatedValueString;
 }
 
